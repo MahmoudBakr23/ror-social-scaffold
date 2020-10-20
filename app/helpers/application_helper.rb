@@ -27,4 +27,19 @@ module ApplicationHelper
       link_to('Add Friend', add_path(user_id: usr.id), method: :post)
     end
   end
+
+  def mutual_friends(usr)
+    a = []
+    a1 = current_user.friends
+    a2 = usr.friends
+
+    a1.each do |f|
+      a2.each do |r|
+        if f == r
+          a << r
+        end
+      end
+    end
+  end
+
 end
