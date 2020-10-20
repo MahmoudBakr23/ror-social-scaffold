@@ -10,10 +10,12 @@
       <h5><%= f.name %></h5>
   <% end %>
 
+<% if @user != current_user %>
   <h3>Mutual Friends:</h3>
   <% mutual_friends(@user).each do |m| %>
     <h5><%= m.name %></h5>
   <% end %>
+<%end%>
   
   <article class="timeline">
     <h3>Recent posts:</h3>
