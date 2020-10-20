@@ -1,5 +1,10 @@
 <section class="user-section">
-  <h2><%= "Name: #{@user.name}" %></h2>
+  <% if @user == current_user %>
+    <h2><%= "My Profile: #{current_user.name}" %></h2>
+  <%else%>
+    <h2><%= "Name: #{@user.name}" %></h2> <small><%= invitations_logic(@user) %></small>
+  <%end%>
+
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">

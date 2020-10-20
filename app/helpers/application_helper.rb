@@ -15,4 +15,16 @@ module ApplicationHelper
       link_to('Like!', post_likes_path(post_id: post.id), method: :post)
     end
   end
+
+  def invitations_logic(usr)
+    return if current_user.id == usr.id || current_user.friends.include?(usr)
+
+    if current_user.pending_friends.include?(usr)
+      link_to( "Pending", "#")
+    elsif current_user.friend_requests.include?(usr)
+      link_to( "Accept", accept_path(user_id: usr.id), method: :put) + ' | ' + link_to( "Cancel", cancel_path(user_id: usr.id), method: :delete, data: { confirm: 'Are you sure?' })
+    else
+      link_to( "Add Friend", add_path(user_id: usr.id), method: :post)
+    end
+  end
 end

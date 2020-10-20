@@ -2,6 +2,10 @@ Rails.application.routes.draw do
 
   root 'posts#index'
 
+  post 'add', to: 'friendships#create'
+  put 'accept', to: 'users#update'
+  delete 'cancel', to: 'users#destroy'
+  
   devise_for :users
 
   resources :users, only: [:index, :show]
