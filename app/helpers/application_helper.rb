@@ -35,12 +35,9 @@ module ApplicationHelper
 
     a1.each do |f|
       a2.each do |r|
-        if f == r
-          a << r
-        end
+        a << r if f == r
       end
     end
     a
   end
-
 end
