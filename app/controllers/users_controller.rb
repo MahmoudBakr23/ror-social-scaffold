@@ -3,7 +3,6 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    
   end
 
   def show
@@ -13,7 +12,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(
-    params[:user_id]
+      params[:user_id]
     )
 
     if current_user.confirm_friend(@user)
@@ -25,7 +24,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(
-    params[:user_id]
+      params[:user_id]
     )
 
     if current_user.reject_friend(@user)
